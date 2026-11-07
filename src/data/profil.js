@@ -98,7 +98,7 @@ export const profilePage = {
       { label: "Alamat", value: site.address },
       { label: "Telepon", value: site.phone.display },
       { label: "Email", value: site.email.display },
-      { label: "Jumlah Guru", value: "68 orang" },
+      { label: "Jumlah Guru", value: "56 orang" },
       { label: "Jumlah Siswa", value: "1.240 siswa" },
       { label: "Jumlah Rombel", value: "36 rombongan belajar" },
       {

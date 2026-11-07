@@ -4,7 +4,6 @@ import { articles, newsPage } from "../data/berita.js";
 import PageHeader from "../components/common/PageHeader.jsx";
 import SectionIntro from "../components/common/SectionIntro.jsx";
 import NewsCard from "../components/common/NewsCard.jsx";
-import CTABand from "../components/common/CTABand.jsx";
 
 function matchesKeyword(article, keyword) {
   if (!keyword) {
@@ -20,7 +19,7 @@ function matchesKeyword(article, keyword) {
 export default function BeritaPage() {
   usePageMeta(newsPage.meta.title, newsPage.meta.description);
 
-  const { header, intro, search, announcements, agenda, cta } = newsPage;
+  const { header, intro, search, announcements, agenda } = newsPage;
   const [query, setQuery] = useState("");
   const keyword = query.toLowerCase().trim();
   const visibleCount = articles.filter((article) =>
@@ -113,7 +112,6 @@ export default function BeritaPage() {
         </div>
       </section>
 
-      <CTABand {...cta} />
     </>
   );
 }

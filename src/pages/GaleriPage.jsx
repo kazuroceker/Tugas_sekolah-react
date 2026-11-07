@@ -6,7 +6,6 @@ import PageHeader from "../components/common/PageHeader.jsx";
 import SectionIntro from "../components/common/SectionIntro.jsx";
 import FilterGroup from "../components/common/FilterGroup.jsx";
 import Icon from "../components/common/Icon.jsx";
-import CTABand from "../components/common/CTABand.jsx";
 
 export default function GaleriPage() {
   usePageMeta(galleryPage.meta.title, galleryPage.meta.description);
@@ -133,7 +132,6 @@ export default function GaleriPage() {
         </div>
       </div>
 
-      <CTABand {...cta} />
     </>
   );
 }

@@ -61,7 +61,7 @@ export const homePage = {
     link: { label: "Baca Selengkapnya \u2192", to: "/profil#sambutan" },
   },
   stats: [
-    { value: 68, suffix: "+", label: "Guru & Tenaga Kependidikan" },
+    { value: 53, suffix: "+", label: "Guru & Tenaga Kependidikan" },
     { value: 1240, suffix: "+", label: "Siswa Aktif" },
     { value: 36, suffix: "", label: "Rombongan Belajar" },
     { value: 4, suffix: "", label: "Kompetensi Keahlian" },

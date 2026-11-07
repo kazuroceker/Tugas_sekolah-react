@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import usePageMeta from "../hooks/usePageMeta.js";
 import { site } from "../data/site.js";
 import { articleBySlug, articlePage } from "../data/berita.js";
-import CTABand from "../components/common/CTABand.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 
 function ArticleView({ article }) {
@@ -77,7 +76,6 @@ function ArticleView({ article }) {
         </div>
       </section>
 
-      <CTABand {...articlePage.cta} />
     </>
   );
 }

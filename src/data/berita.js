@@ -27,15 +27,15 @@ export const newsPage = {
     title: "Pengumuman Singkat",
     items: [
       {
-        date: "2 April 2026",
+        date: "10 November 2026",
         text: "Workshop literasi digital untuk guru dan tenaga kependidikan.",
       },
       {
-        date: "2 Mei 2026",
-        text: "Peringatan Hari Pendidikan Nasional di lapangan sekolah.",
+        date: "13 November 2026",
+        text: "Peringatan Hari Ulang Tahun Sekolah di lapangan sekolah.",
       },
       {
-        date: "12 Mei 2026",
+        date: "16 November 2026",
         text: "Pengumuman jadwal ujian akhir semester genap.",
       },
     ],
@@ -43,9 +43,9 @@ export const newsPage = {
   agenda: {
     title: "Agenda Terdekat",
     items: [
-      { date: "18 Mei 2026", text: "Ujian Akhir Semester" },
-      { date: "25 Mei 2026", text: "Pentas Seni Siswa" },
-      { date: "1 Juni 2026", text: "Libur Hari Lahir Pancasila" },
+      { date: "23 November 2026", text: "Ujian Akhir Semester" },
+      { date: "30 November 2026", text: "Pentas Seni Siswa" },
+      { date: "14 Desember 2026", text: "Libur Hari Raya Natal & Tahun Baru" },
     ],
   },
   cta: {
@@ -60,20 +60,20 @@ export const articles = [
     slug: "ppdb",
     path: "/berita/ppdb",
     category: "PPDB",
-    date: "5 Januari 2026",
-    title: "PPDB 2026/2027 Resmi Dibuka",
+    date: "5 Januari 2027",
+    title: "PPDB 2027/2028 Resmi Dibuka",
     excerpt: "Pendaftaran gelombang pertama dibuka untuk calon siswa baru.",
     author: `Tim Humas ${site.name}`,
     image: "/images/berita-ppdb.jpg",
-    imageAlt: "PPDB 2026/2027 Resmi Dibuka",
+    imageAlt: "PPDB 2027/2028 Resmi Dibuka",
     paragraphs: [
-      `${site.name} resmi membuka penerimaan peserta didik baru (PPDB) tahun ajaran 2026/2027. Pendaftaran gelombang pertama dibuka mulai 5 Januari hingga 28 Februari 2026.`,
+      `${site.name} resmi membuka penerimaan peserta didik baru (PPDB) tahun ajaran 2027/2028. Pendaftaran gelombang pertama dibuka mulai 5 Januari hingga 28 Februari 2027.`,
       "Calon siswa dapat mendaftar secara daring melalui formulir yang tersedia di halaman kontak atau datang langsung ke sekolah pada hari dan jam layanan. Berkas yang perlu disiapkan meliputi fotokopi ijazah, kartu keluarga, akta kelahiran, dan pas foto terbaru.",
       "Sekolah menyediakan empat kompetensi keahlian yang dapat dipilih, yaitu Teknik Komputer dan Jaringan, Rekayasa Perangkat Lunak, Desain Komunikasi Visual, serta Akuntansi dan Keuangan Lembaga.",
       "Panitia mengimbau calon siswa dan orang tua untuk membaca panduan pendaftaran dengan teliti serta menghubungi sekolah apabila ada hal yang belum jelas.",
     ],
     points: [
-      "Pendaftaran gelombang pertama: 5 Januari - 28 Februari 2026.",
+      "Pendaftaran gelombang pertama: 5 Januari - 28 Februari 2027.",
       "Empat pilihan kompetensi keahlian tersedia.",
       "Pendaftaran dapat dilakukan daring atau langsung di sekolah.",
       "Informasi resmi hanya melalui kanal sekolah.",
