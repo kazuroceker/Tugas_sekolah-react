@@ -23,6 +23,12 @@ export const newsPage = {
     placeholder: "Cari berita atau pengumuman...",
     empty: "Berita tidak ditemukan.",
   },
+  pagination: {
+    perPage: 3,
+    ariaLabel: "Navigasi halaman berita",
+    previous: "Halaman sebelumnya",
+    next: "Halaman berikutnya",
+  },
   announcements: {
     title: "Pengumuman Singkat",
     items: [

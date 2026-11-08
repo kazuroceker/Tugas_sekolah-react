@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import usePageMeta from "../hooks/usePageMeta.js";
 import { articles, newsPage } from "../data/berita.js";
 import PageHeader from "../components/common/PageHeader.jsx";
@@ -19,13 +19,46 @@ function matchesKeyword(article, keyword) {
 export default function BeritaPage() {
   usePageMeta(newsPage.meta.title, newsPage.meta.description);
 
-  const { header, intro, search, announcements, agenda } = newsPage;
+  const { header, intro, search, pagination, announcements, agenda } = newsPage;
   const [query, setQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const listRef = useRef(null);
+
   const keyword = query.toLowerCase().trim();
-  const visibleCount = articles.filter((article) =>
+  const filteredArticles = articles.filter((article) =>
     matchesKeyword(article, keyword)
-  ).length;
-  const isEmpty = keyword !== "" && visibleCount === 0;
+  );
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredArticles.length / pagination.perPage)
+  );
+  const activePage = Math.min(currentPage, totalPages);
+  const startIndex = (activePage - 1) * pagination.perPage;
+  const visibleArticles = filteredArticles.slice(
+    startIndex,
+    startIndex + pagination.perPage
+  );
+  const pageNumbers = Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  );
+  const isEmpty = keyword !== "" && filteredArticles.length === 0;
+
+  function handleSearchChange(event) {
+    setQuery(event.target.value);
+    setCurrentPage(1);
+  }
+
+  function goToPage(page) {
+    const nextPage = Math.min(Math.max(page, 1), totalPages);
+
+    if (nextPage === activePage) {
+      return;
+    }
+
+    setCurrentPage(nextPage);
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
     <>
@@ -49,7 +82,7 @@ export default function BeritaPage() {
                 className="form-control form-control-lg"
                 placeholder={search.placeholder}
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={handleSearchChange}
               />
             </div>
           </div>
@@ -64,33 +97,80 @@ export default function BeritaPage() {
             {search.empty}
           </p>
 
-          <div className="row g-4">
-            {articles.map((article, index) => (
-              <NewsCard
-                article={article}
-                delay={index * 100}
-                hidden={!matchesKeyword(article, keyword)}
-                key={article.slug}
-              />
-            ))}
-          </div>
-
-          <div className="row mt-5">
-            <div className="col-lg-8" data-aos="fade-up">
-              <h2 className="section-title mb-3">{announcements.title}</h2>
-              <ul className="list-unstyled fs-6">
-                {announcements.items.map((item) => (
-                  <li className="border-bottom py-3" key={item.date}>
-                    <span className="text-secondary text-uppercase fs-6">
-                      {item.date} /
-                    </span>{" "}
-                    {item.text}
-                  </li>
+          <div className="row g-5">
+            <div className="col-lg-8">
+              <div className="row g-4 news-list" ref={listRef}>
+                {visibleArticles.map((article, index) => (
+                  <NewsCard
+                    article={article}
+                    delay={index * 100}
+                    columnClassName="col-12"
+                    layout="horizontal"
+                    key={article.slug}
+                  />
                 ))}
-              </ul>
+              </div>
+
+              {totalPages > 1 ? (
+                <nav
+                  className="news-pagination mt-5"
+                  aria-label={pagination.ariaLabel}
+                >
+                  <ul className="pagination justify-content-center mb-0">
+                    <li
+                      className={`page-item${
+                        activePage === 1 ? " disabled" : ""
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        className="page-link"
+                        aria-label={pagination.previous}
+                        onClick={() => goToPage(activePage - 1)}
+                      >
+                        &laquo;
+                      </button>
+                    </li>
+                    {pageNumbers.map((page) => (
+                      <li
+                        className={`page-item${
+                          page === activePage ? " active" : ""
+                        }`}
+                        key={page}
+                      >
+                        <button
+                          type="button"
+                          className="page-link"
+                          aria-current={
+                            page === activePage ? "page" : undefined
+                          }
+                          onClick={() => goToPage(page)}
+                        >
+                          {page}
+                        </button>
+                      </li>
+                    ))}
+                    <li
+                      className={`page-item${
+                        activePage === totalPages ? " disabled" : ""
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        className="page-link"
+                        aria-label={pagination.next}
+                        onClick={() => goToPage(activePage + 1)}
+                      >
+                        &raquo;
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              ) : null}
             </div>
-            <div className="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-              <div className="bg-light p-4">
+
+            <aside className="col-lg-4 news-sidebar">
+              <div className="bg-light p-4 mb-4" data-aos="fade-up">
                 <h2 className="fs-5 text-uppercase mb-3">{agenda.title}</h2>
                 <ul className="list-unstyled fs-6 mb-0">
                   {agenda.items.map((item, index) => (
@@ -107,11 +187,37 @@ export default function BeritaPage() {
                   ))}
                 </ul>
               </div>
-            </div>
+
+              <div
+                className="bg-light p-4"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <h2 className="fs-5 text-uppercase mb-3">
+                  {announcements.title}
+                </h2>
+                <ul className="list-unstyled fs-6 mb-0">
+                  {announcements.items.map((item, index) => (
+                    <li
+                      className={
+                        index === announcements.items.length - 1
+                          ? ""
+                          : "border-bottom pb-3 mb-3"
+                      }
+                      key={item.date}
+                    >
+                      <span className="text-secondary text-uppercase fs-6">
+                        {item.date} /
+                      </span>{" "}
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
-
     </>
   );
 }

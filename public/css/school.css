@@ -547,3 +547,71 @@ h1.section-title {
     height: 240px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Sidebar halaman berita
+   -------------------------------------------------------------------------- */
+.news-sidebar {
+  align-self: flex-start;
+}
+
+@media (min-width: 992px) {
+  .news-sidebar {
+    position: sticky;
+    top: 112px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Kartu berita layout horizontal (gambar di kiri, teks di kanan)
+   -------------------------------------------------------------------------- */
+@media (min-width: 576px) {
+  .post-item-horizontal .post-image,
+  .post-item-horizontal .post-image a,
+  .post-item-horizontal .post-grid-image {
+    height: 100%;
+  }
+
+  .post-item-horizontal .post-image {
+    min-height: 220px;
+  }
+
+  .post-item-horizontal .post-image a {
+    display: block;
+  }
+
+  .post-item-horizontal .post-grid-image {
+    object-fit: cover;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Pagination halaman berita
+   -------------------------------------------------------------------------- */
+.news-list {
+  scroll-margin-top: 120px;
+}
+
+.news-pagination .page-link {
+  color: var(--bs-dark);
+  background-color: transparent;
+  border-color: var(--bs-border-color);
+  font-size: 0.875rem;
+}
+
+.news-pagination .page-link:hover {
+  color: var(--bs-dark);
+  background-color: var(--bs-gray-200);
+  border-color: var(--bs-border-color);
+}
+
+.news-pagination .page-item.active .page-link {
+  color: var(--bs-white);
+  background-color: var(--bs-dark);
+  border-color: var(--bs-dark);
+}
+
+.news-pagination .page-item.disabled .page-link {
+  color: var(--bs-secondary);
+  background-color: transparent;
+}
