@@ -4,6 +4,7 @@ import { articles, newsPage } from "../data/berita.js";
 import PageHeader from "../components/common/PageHeader.jsx";
 import SectionIntro from "../components/common/SectionIntro.jsx";
 import NewsCard from "../components/common/NewsCard.jsx";
+import Pagination from "../components/common/Pagination.jsx";
 
 function matchesKeyword(article, keyword) {
   if (!keyword) {
@@ -37,10 +38,6 @@ export default function BeritaPage() {
   const visibleArticles = filteredArticles.slice(
     startIndex,
     startIndex + pagination.perPage
-  );
-  const pageNumbers = Array.from(
-    { length: totalPages },
-    (_, index) => index + 1
   );
   const isEmpty = keyword !== "" && filteredArticles.length === 0;
 
@@ -111,62 +108,15 @@ export default function BeritaPage() {
                 ))}
               </div>
 
-              {totalPages > 1 ? (
-                <nav
-                  className="news-pagination mt-5"
-                  aria-label={pagination.ariaLabel}
-                >
-                  <ul className="pagination justify-content-center mb-0">
-                    <li
-                      className={`page-item${
-                        activePage === 1 ? " disabled" : ""
-                      }`}
-                    >
-                      <button
-                        type="button"
-                        className="page-link"
-                        aria-label={pagination.previous}
-                        onClick={() => goToPage(activePage - 1)}
-                      >
-                        &laquo;
-                      </button>
-                    </li>
-                    {pageNumbers.map((page) => (
-                      <li
-                        className={`page-item${
-                          page === activePage ? " active" : ""
-                        }`}
-                        key={page}
-                      >
-                        <button
-                          type="button"
-                          className="page-link"
-                          aria-current={
-                            page === activePage ? "page" : undefined
-                          }
-                          onClick={() => goToPage(page)}
-                        >
-                          {page}
-                        </button>
-                      </li>
-                    ))}
-                    <li
-                      className={`page-item${
-                        activePage === totalPages ? " disabled" : ""
-                      }`}
-                    >
-                      <button
-                        type="button"
-                        className="page-link"
-                        aria-label={pagination.next}
-                        onClick={() => goToPage(activePage + 1)}
-                      >
-                        &raquo;
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
-              ) : null}
+              <Pagination
+                currentPage={activePage}
+                totalPages={totalPages}
+                onChange={goToPage}
+                ariaLabel={pagination.ariaLabel}
+                previousLabel={pagination.previous}
+                nextLabel={pagination.next}
+                className="mt-5"
+              />
             </div>
 
             <aside className="col-lg-4 news-sidebar">

@@ -24,6 +24,12 @@ export const galleryPage = {
     { value: "Fasilitas", label: "Fasilitas" },
     { value: "Prestasi", label: "Prestasi" },
   ],
+  pagination: {
+    perPage: 12,
+    ariaLabel: "Navigasi halaman galeri",
+    previous: "Halaman sebelumnya",
+    next: "Halaman berikutnya",
+  },
   defaultImage: "/images/galeri-1.jpg",
   items: [
     {

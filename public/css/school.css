@@ -1,12 +1,3 @@
-/* ==========================================================================
-   Website Sekolah
-   Penyesuaian di atas template Kaira.
-   Hanya layout/perekat. Warna, font, tombol, dan komponen mengikuti Kaira.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   Brand / logo teks di navbar
-   -------------------------------------------------------------------------- */
 .navbar-brand .brand-mark {
   width: 42px;
   height: 42px;
@@ -45,8 +36,6 @@ section[id] {
 
 /* --------------------------------------------------------------------------
    Header sticky
-   Sticky dipasang pada <header>, bukan <nav>, karena elemen sticky dibatasi
-   oleh tinggi kotak parent-nya.
    -------------------------------------------------------------------------- */
 header.sticky-top {
   z-index: 1020;
@@ -138,8 +127,6 @@ header.sticky-top {
 
 /* --------------------------------------------------------------------------
    Judul responsif
-   Skala mengikuti ukuran asli Kaira, hanya dibuat cair agar kata panjang
-   seperti "Ekstrakurikuler" tidak meluber di layar kecil.
    -------------------------------------------------------------------------- */
 .section-title {
   font-size: clamp(1.85rem, 1.2rem + 2.6vw, 3.6rem);
@@ -586,32 +573,33 @@ h1.section-title {
 }
 
 /* --------------------------------------------------------------------------
-   Pagination halaman berita
+   Pagination (berita & galeri)
    -------------------------------------------------------------------------- */
-.news-list {
+.news-list,
+.galeri-list {
   scroll-margin-top: 120px;
 }
 
-.news-pagination .page-link {
+.school-pagination .page-link {
   color: var(--bs-dark);
   background-color: transparent;
   border-color: var(--bs-border-color);
   font-size: 0.875rem;
 }
 
-.news-pagination .page-link:hover {
+.school-pagination .page-link:hover {
   color: var(--bs-dark);
   background-color: var(--bs-gray-200);
   border-color: var(--bs-border-color);
 }
 
-.news-pagination .page-item.active .page-link {
+.school-pagination .page-item.active .page-link {
   color: var(--bs-white);
   background-color: var(--bs-dark);
   border-color: var(--bs-dark);
 }
 
-.news-pagination .page-item.disabled .page-link {
+.school-pagination .page-item.disabled .page-link {
   color: var(--bs-secondary);
   background-color: transparent;
 }

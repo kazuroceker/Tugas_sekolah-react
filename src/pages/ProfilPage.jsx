@@ -2,7 +2,6 @@ import usePageMeta from "../hooks/usePageMeta.js";
 import { profilePage } from "../data/profil.js";
 import PageHeader from "../components/common/PageHeader.jsx";
 import SectionHeading from "../components/common/SectionHeading.jsx";
-import CTABand from "../components/common/CTABand.jsx";
 import Icon from "../components/common/Icon.jsx";
 
 export default function ProfilPage() {
@@ -210,7 +209,6 @@ export default function ProfilPage() {
         </div>
       </section>
 
-      <CTABand {...cta} />
     </>
   );
 }
